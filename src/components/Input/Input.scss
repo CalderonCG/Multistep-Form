@@ -1,0 +1,40 @@
+@use "../../styles/variables" as v;
+.input {
+  width: 100%;
+  color: v.$Blue950;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &_labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  &_box {
+    width: 100%;
+    padding: 1rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: v.$Blue950;
+    font-weight: 700;
+    border: 1px solid v.$Grey500;
+    outline: none;
+
+    &:focus{
+    
+    border: 2px solid v.$Blue950;
+    }
+  }
+
+}
+
+  .error_label{
+    color: v.$Red500;
+  }
+
+  .no_error_label{
+    display: none;
+  }

@@ -1,4 +1,7 @@
 import StepCard from '../StepCard/StepCard'
+import StepOne from '../StepOne/StepOne'
+import StepThree from '../StepThree/StepThree'
+import StepTwo from '../StepTwo/StepTwo'
 import './Form.scss'
 
 function Form() {
@@ -10,7 +13,9 @@ function Form() {
             <StepCard/>
             <StepCard/>
         </div>
-        <div></div>
+        <div className='container_form'>
+            <StepThree/>
+        </div>
     </div>
   )
 }
