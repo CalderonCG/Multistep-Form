@@ -1,0 +1,29 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as v;
+
+.stepcard {
+  @include m.flexCenter(row, start);
+  width: 100%;
+  gap: 1rem;
+
+  &_number {
+    @include m.flexCenter(row, center);
+    border: 1px solid white;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 10rem;
+  }
+
+  &_details {
+    &_number {
+      font-size: 14px;
+      font-weight: 600;
+      color: v.$Grey500;
+    }
+
+    &_name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,11 +1,13 @@
 
 import './App.scss'
+import Form from './components/Form/Form'
+
 
 function App() {
   return (
-    <>
-    Everyone has the right to freedom
-    </>
+    <div className='app_container'>
+    <Form/>
+    </div>
   )
 }
 

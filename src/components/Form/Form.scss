@@ -1,0 +1,26 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as v;
+
+.container {
+  @include m.flexCenter(row, start);
+  width: 70%;
+  height: 80%;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background-color: white;
+
+  &_list {
+    @include m.flexCenter(column, start);
+    height: 100%;
+    width: 30%;
+    color: white;
+    padding: 2rem;
+    gap: 2rem;
+    border-radius: 1rem;
+
+    background-image: url("/src/assets/images/bg-sidebar-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: cover; // or cover
+    background-position: center;
+  }
+}
