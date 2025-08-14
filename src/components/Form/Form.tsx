@@ -1,4 +1,5 @@
 import StepCard from '../StepCard/StepCard'
+import StepFour from '../StepFour/StepFour'
 import StepOne from '../StepOne/StepOne'
 import StepThree from '../StepThree/StepThree'
 import StepTwo from '../StepTwo/StepTwo'
@@ -14,7 +15,7 @@ function Form() {
             <StepCard/>
         </div>
         <div className='container_form'>
-            <StepThree/>
+            <StepFour/>
         <div className="steps">
         <button className="steps_prev">Go back</button>
         <button className="steps_next">Next Step</button>
