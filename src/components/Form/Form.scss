@@ -24,21 +24,21 @@
     background-position: center;
   }
 
-  &_form{
-        @include m.flexCenter(column, start);
+  &_form {
+    @include m.flexCenter(column, start);
     height: 100%;
     width: 100%;
   }
 
-    .steps {
+  .steps {
     @include m.flexCenter(row, space-between);
     width: 100%;
     flex: 0 0 auto;
-    
-  padding: 1rem 7rem;
+    padding: 1rem 7rem;
+
     &_next {
       @include m.stepButton();
-      align-self: flex-end;
+      margin-left: auto;
     }
 
     &_prev {
@@ -47,11 +47,15 @@
       font-weight: 700;
       border: none;
       border-radius: 0.5rem;
-    
+
       background-color: inherit;
-      color:v.$Grey500;
+      color: v.$Grey500;
       flex: 0 0 auto;
       align-self: flex-end;
     }
   }
+}
+
+.hidden {
+  display: none;
 }
