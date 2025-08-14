@@ -5,6 +5,7 @@ import StepOne from "../StepOne/StepOne";
 import StepThree from "../StepThree/StepThree";
 import StepTwo from "../StepTwo/StepTwo";
 import "./Form.scss";
+import { useForm } from "../../utils/FormContext";
 
 const updateStep = (state: number, type: "Next" | "Prev") => {
   switch (type) {
@@ -19,7 +20,8 @@ const updateStep = (state: number, type: "Next" | "Prev") => {
 
 function Form() {
   const [step, dispatchStep] = useReducer(updateStep, 1);
-  console.log(step);
+  const {form, updateForm} = useForm();
+  console.log(form);
 
   return (
     <div className="container">
