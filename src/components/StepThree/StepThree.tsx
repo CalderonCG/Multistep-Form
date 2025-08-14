@@ -1,6 +1,9 @@
+import type { StepPropsType } from '../../utils/FormTypes';
 import AddonCard from '../AddonCard/AddonCard';
 import './StepThree.scss'
-function StepThree() {
+
+
+function StepThree({handleStep} : StepPropsType) {
   return (
     <div className="step_three_container">
       <div className="step_three_container_header">
@@ -16,7 +19,10 @@ function StepThree() {
         <AddonCard/>
       </div>
 
-
+      <div className="steps">
+        <button className={`steps_prev `} onClick={() => handleStep("Prev")}>Go back</button>
+        <button className={`steps_next `} onClick={() => handleStep("Next")}>Next Step</button>
+      </div>
     </div>
   );
 }

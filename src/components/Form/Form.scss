@@ -30,32 +30,5 @@
     width: 100%;
   }
 
-  .steps {
-    @include m.flexCenter(row, space-between);
-    width: 100%;
-    flex: 0 0 auto;
-    padding: 1rem 7rem;
-
-    &_next {
-      @include m.stepButton();
-      margin-left: auto;
-    }
-
-    &_prev {
-      width: fit-content;
-      padding: 1rem 2rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 0.5rem;
-
-      background-color: inherit;
-      color: v.$Grey500;
-      flex: 0 0 auto;
-      align-self: flex-end;
-    }
-  }
-}
-
-.hidden {
-  display: none;
+  
 }

@@ -39,3 +39,6 @@ export type PayloadType =
   | { step: 2; data: StepTwoType }
   | { step: 3; data: StepThreeType };
 
+export type StepPropsType={
+  handleStep : React.ActionDispatch<[type: "Next" | "Prev"]>
+}

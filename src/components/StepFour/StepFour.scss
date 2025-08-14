@@ -24,6 +24,12 @@
     color: v.$Grey500;
   }
 
+  &_summary{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
   .summary {
     @include m.flexCenter(column, start);
     background-color: v.$Blue100;
@@ -90,18 +96,41 @@
     @include m.flexCenter(row, space-between);
     width: 100%;
 
-      &_label{
-    
-        color: v.$Grey500;
-        font-weight: 500;
+    &_label {
+      color: v.$Grey500;
+      font-weight: 500;
+    }
+
+    &_price {
+      color: v.$Purple600;
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
   }
 
-        &_price{
-    
-        color: v.$Purple600;
-        font-weight: 600;
-        font-size: 1.4rem;
-  }
+  .steps {
+    @include m.flexCenter(row, space-between);
+    width: 100%;
+    flex: 0 0 auto;
+
+    &_next {
+      @include m.stepButton();
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    &_prev {
+      width: fit-content;
+      padding: 1rem 2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 0.5rem;
+
+      background-color: inherit;
+      color: v.$Grey500;
+      flex: 0 0 auto;
+      align-self: flex-end;
+    }
   }
 }
 
@@ -109,6 +138,4 @@
   width: 100%;
   border: none;
   border-top: 1px solid v.$Grey500;
-
-
 }

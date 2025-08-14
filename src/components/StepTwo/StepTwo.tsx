@@ -1,7 +1,8 @@
+import type { StepPropsType } from "../../utils/FormTypes";
 import PlanCard from "../PlanCard/PlanCard";
 import "./StepTwo.scss";
 
-function StepTwo() {
+function StepTwo({handleStep} : StepPropsType) {
   return (
     <div className="step_two_container">
       <div className="step_two_container_header">
@@ -27,8 +28,12 @@ function StepTwo() {
           <p>Yearly</p>
         </div>
       </div>
+      <div className="steps">
+        <button className={`steps_prev `} onClick={() => handleStep("Prev")}>Go back</button>
+        <button className={`steps_next `} onClick={() => handleStep("Next")}>Next Step</button>
+      </div>
     </div>
-  );
+  )
 }
 
 export default StepTwo;

@@ -1,6 +1,7 @@
+import type { StepPropsType } from "../../utils/FormTypes";
 import "./StepFour.scss";
 
-function StepFour() {
+function StepFour({handleStep} : StepPropsType) {
   return (
     <div className="step_four_container">
       <div className="step_four_container_header">
@@ -10,6 +11,7 @@ function StepFour() {
         </p>
       </div>
 
+      <div className="step_four_container_summary">
       <div className="summary">
         <div className="summary_details">
           <div className="summary_details_plan">
@@ -35,6 +37,12 @@ function StepFour() {
       <div className="total">
         <p className="total_label">Total(per year)</p>
         <p className="total_price">$120/yr</p>
+      </div>
+      </div>
+
+
+      <div className="steps">
+        <button className={`steps_prev `} onClick={() => handleStep("Prev")}>Go back</button>
       </div>
     </div>
   );

@@ -33,28 +33,14 @@ function Form() {
       </div>
       <div className="container_form">
         {step === 1 ? (
-          <StepOne />
+          <StepOne handleStep={dispatchStep}/>
         ) : step === 2 ? (
-          <StepTwo />
+          <StepTwo handleStep={dispatchStep}/>
         ) : step === 3 ? (
-          <StepThree />
+          <StepThree handleStep={dispatchStep}/>
         ) : (
-          <StepFour />
+          <StepFour handleStep={dispatchStep}/>
         )}
-        <div className="steps">
-          <button
-            className={`steps_prev ${step === 1 ? "hidden" : ""}`}
-            onClick={() => dispatchStep("Prev")}
-          >
-            Go back
-          </button>
-          <button
-            className={`steps_next ${step === 4 ? "hidden" : ""}`}
-            onClick={() => dispatchStep("Next")}
-          >
-            Next Step
-          </button>
-        </div>
       </div>
     </div>
   );

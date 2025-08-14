@@ -31,15 +31,15 @@
     gap: 1rem
   }
 
-  .steps {
+
+        .steps {
     @include m.flexCenter(row, space-between);
     width: 100%;
-
-    flex: 0 0 auto;
 
     &_next {
       @include m.stepButton();
       align-self: flex-end;
+      margin-left: auto;
     }
 
     &_prev {
@@ -48,11 +48,10 @@
       font-weight: 700;
       border: none;
       border-radius: 0.5rem;
-    
+
       background-color: inherit;
       color:v.$Grey500;
       flex: 0 0 auto;
       align-self: flex-end;
-    }
-  }
+    }}
 }
