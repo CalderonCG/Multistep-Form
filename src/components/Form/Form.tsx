@@ -15,6 +15,10 @@ function Form() {
         </div>
         <div className='container_form'>
             <StepThree/>
+        <div className="steps">
+        <button className="steps_prev">Go back</button>
+        <button className="steps_next">Next Step</button>
+      </div>
         </div>
     </div>
   )

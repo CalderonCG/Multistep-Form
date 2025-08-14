@@ -27,11 +27,6 @@ function StepTwo() {
           <p>Yearly</p>
         </div>
       </div>
-      <div className="steps">
-        
-        <button className="steps_prev">Go back</button>
-        <button className="steps_next">Next Step</button>
-      </div>
     </div>
   );
 }

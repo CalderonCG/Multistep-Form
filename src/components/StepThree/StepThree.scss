@@ -3,7 +3,7 @@
 
 .step_three_container {
   width: 100%;
-  height: 100%;
+  flex: 1 1 auto;
   padding: 3rem 7rem;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@
   &_addons{
     @include m.flexCenter(column, center);
     flex: 1 1 auto;
+    gap: 1rem
   }
 
   .steps {

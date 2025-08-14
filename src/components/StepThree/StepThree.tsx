@@ -12,12 +12,11 @@ function StepThree() {
 
       <div className='step_three_container_addons'>
         <AddonCard/>
+        <AddonCard/>
+        <AddonCard/>
       </div>
 
-      <div className="steps">
-        <button className="steps_prev">Go back</button>
-        <button className="steps_next">Next Step</button>
-      </div>
+
     </div>
   );
 }

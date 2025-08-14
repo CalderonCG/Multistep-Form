@@ -17,7 +17,6 @@ function StepOne() {
       <Input name="Phone Number" placeholder="e.g +503 1235 1235"/>
       </div>
 
-      <button>Next Step</button>
     </div>
   );
 }
