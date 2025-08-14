@@ -33,7 +33,7 @@ function Form() {
       </div>
       <div className="container_form">
         {step === 1 ? (
-          <StepOne handleStep={dispatchStep}/>
+          <StepOne data={form.stepOne} handleStep={dispatchStep} handleFormUpdate={updateForm}/>
         ) : step === 2 ? (
           <StepTwo handleStep={dispatchStep}/>
         ) : step === 3 ? (
