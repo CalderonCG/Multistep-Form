@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { type StepOneType, type StepPropsType } from "../../utils/FormTypes";
+import { type StepOnePropsType, type StepOneType} from "../../utils/FormTypes";
 import Input from "../Input/Input";
 import "./StepOne.scss";
 
@@ -25,11 +25,11 @@ const handleChange = (state: StepOneType, action: ActionType): StepOneType => {
   }
 };
 
-function StepOne({ data, handleStep, handleFormUpdate }: StepPropsType) {
+function StepOne({ data, handleStep, handleFormUpdate }: StepOnePropsType) {
   const [state, dispatch] = useReducer(handleChange, {
-    name: "",
-    email: "",
-    phoneNumber: "",
+    name: data.name,
+    email: data.email,
+    phoneNumber: data.phoneNumber,
   });
 
   const handleSubmit = (type: 'Next'|'Prev') =>{

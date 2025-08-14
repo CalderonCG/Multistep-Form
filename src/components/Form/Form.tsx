@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import StepCard from "../StepCard/StepCard";
 import StepFour from "../StepFour/StepFour";
 import StepOne from "../StepOne/StepOne";

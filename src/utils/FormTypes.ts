@@ -39,8 +39,17 @@ export type PayloadType =
   | { step: 2; data: StepTwoType }
   | { step: 3; data: StepThreeType };
 
-export type StepPropsType={
-  data: StepOneType | StepTwoType | StepThreeType
+type StepPropsType={
   handleStep : React.ActionDispatch<[type: "Next" | "Prev"]>,
   handleFormUpdate: (arg: PayloadType) => void
+}
+
+export type StepOnePropsType= StepPropsType &{
+  data: StepOneType
+}
+export type StepTwoPropsType= StepPropsType &{
+  data: StepTwoType
+}
+export type StepThreePropsType= StepPropsType &{
+  data: StepThreeType
 }
