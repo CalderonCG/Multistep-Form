@@ -47,9 +47,9 @@ function StepTwo({ data, planType, handleStep, handleFormUpdate, handleTypeUpdat
   return (
     <div className="step_two_container">
       <div className="step_two_container_header">
-        <h1>Personal info</h1>
+        <h1>Select your plan</h1>
         <p className="step_two_container_description">
-          Please provide your name, email address and phone number{" "}
+          You have the option or monthly or yearly billing
         </p>
       </div>
 

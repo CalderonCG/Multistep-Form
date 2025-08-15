@@ -1,7 +1,8 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { type StepOnePropsType, type StepOneType} from "../../utils/FormTypes";
 import Input from "../Input/Input";
 import "./StepOne.scss";
+import { validateForm } from "../../utils/FormValidation";
 
 
 //Tipo de la accion que recibe el dispatcher
@@ -31,8 +32,21 @@ function StepOne({ data, handleStep, handleFormUpdate }: StepOnePropsType) {
     email: data.email,
     phoneNumber: data.phoneNumber,
   });
+  const [errors, setErrors] = useState<Record<string,string>>({
+    name: '',
+    email: '',
+    phoneNumber: ''
+  });
 
   const handleSubmit = (type: 'Next'|'Prev') =>{
+    const errorList =validateForm(state)
+    const hasError = Object.values(errorList).some(value => value !== '')
+    
+    console.log(errorList)
+    if(hasError){
+      setErrors(errorList)
+      return
+    }
     handleFormUpdate({step: 1, data: state});
     handleStep(type)
   }
@@ -46,9 +60,12 @@ function StepOne({ data, handleStep, handleFormUpdate }: StepOnePropsType) {
         </p>
       </div>
       <div className="step_one_container_inputs">
-        <Input name="Name" placeholder="e.g Christopher Calderon" value={state.name} action="name" handleChange={dispatch}/>
-        <Input name="Email Address" placeholder="e.g Chris@email.com" value={state.email} action="email" handleChange={dispatch}/>
-        <Input name="Phone Number" placeholder="e.g +503 1235 1235" value={state.phoneNumber} action="phoneNumber" handleChange={dispatch}/>
+        <Input name="Name" placeholder="e.g Christopher Calderon" value={state.name} 
+        action="name" handleChange={dispatch} error={errors.name}/>
+        <Input name="Email Address" placeholder="e.g Chris@email.com" value={state.email}
+         action="email" handleChange={dispatch} error={errors.email}/>
+        <Input name="Phone Number" placeholder="e.g +503 1235 1235" value={state.phoneNumber}
+         action="phoneNumber" handleChange={dispatch} error={errors.phoneNumber}/>
       </div>
       <div className="steps">
         <button className={`steps_next `} onClick={() => handleSubmit("Next")}>

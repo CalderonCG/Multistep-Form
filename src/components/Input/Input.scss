@@ -29,10 +29,18 @@
     }
   }
 
+
+}
+
+.error_border{
+  
+    border: 2px solid v.$Red500;
 }
 
   .error_label{
     color: v.$Red500;
+
+
   }
 
   .no_error_label{
