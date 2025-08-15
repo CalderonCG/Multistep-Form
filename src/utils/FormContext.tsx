@@ -25,7 +25,29 @@ const initialForm: FormType = {
     },
   },
   stepThree: {
-    addons: [],
+    addons: [
+        {
+    id: 1,
+    name: "Online service",
+    description: "Access to multiplayer games",
+    monthlyPrice: 1,
+    yearlyPrice: 10,
+  },
+  {
+    id: 2,
+    name: "Larger storage",
+    description: "Extra 1TB of cloud storage",
+    monthlyPrice: 2,
+    yearlyPrice: 20,
+  },
+  {
+    id: 3,
+    name: "Customizable profile",
+    description: "Custom theme on your profile",
+    monthlyPrice: 2,
+    yearlyPrice: 20,
+  },
+    ],
   },
   
     type: "Monthly",

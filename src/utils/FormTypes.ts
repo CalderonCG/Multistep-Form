@@ -36,8 +36,11 @@ export type PlanType = {
 };
 
 export type AddonType = {
+  id: number;
   name: string;
-  price: number;
+  description: string
+  monthlyPrice: number;
+  yearlyPrice: number;
 };
 
 export type PayloadType = 
@@ -61,4 +64,5 @@ export type StepTwoPropsType= StepPropsType &{
 }
 export type StepThreePropsType= StepPropsType &{
   data: StepThreeType
+  planType: "Monthly" | "Yearly",
 }
