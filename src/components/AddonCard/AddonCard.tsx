@@ -7,7 +7,7 @@ type AddonProps = AddonType & {
 }
 
 function AddonCard({id, name, description, monthlyPrice, yearlyPrice, type, isAdded, handleChange}: AddonProps) {
-  return <div className="addon">
+  return <div className={`addon ${isAdded? 'selectedAddon' : ''}`}>
     <input type="checkbox" className='addon_check' checked={isAdded} onChange={()=>handleChange(id)}/>
     <div className="addon_details">
         <p className='addon_name'>{name}</p>

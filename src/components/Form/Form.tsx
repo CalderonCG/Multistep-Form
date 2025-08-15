@@ -39,7 +39,7 @@ function Form() {
         ) : step === 3 ? (
           <StepThree data={form.stepThree} handleStep={dispatchStep } handleFormUpdate={updateForm}  planType={form.type}/>
         ) : (
-          <StepFour handleStep={dispatchStep}/>
+          <StepFour form={form} handleStep={dispatchStep}/>
         )}
       </div>
     </div>

@@ -11,7 +11,7 @@
   padding: 1rem;
 
   &:hover {
-    border: 1px solid v.$Blue950;
+    border: 2px solid v.$Blue950;
   }
 
   &_details {
@@ -41,6 +41,6 @@
 }
 
 .selectedPlan {
-  border: 1px solid v.$Blue950;
+  border: 2px solid v.$Blue950;
   background-color: v.$Blue100;
 }
