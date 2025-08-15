@@ -1,30 +1,8 @@
+import { useState } from "react";
 import type { AddonType, StepThreePropsType } from "../../utils/FormTypes";
 import AddonCard from "../AddonCard/AddonCard";
 import "./StepThree.scss";
 
-const addons: AddonType[] = [
-  {
-    id: 1,
-    name: "Online service",
-    description: "Access to multiplayer games",
-    monthlyPrice: 1,
-    yearlyPrice: 10,
-  },
-  {
-    id: 2,
-    name: "Larger storage",
-    description: "Extra 1TB of cloud storage",
-    monthlyPrice: 2,
-    yearlyPrice: 20,
-  },
-  {
-    id: 3,
-    name: "Customizable profile",
-    description: "Custom theme on your profile",
-    monthlyPrice: 2,
-    yearlyPrice: 20,
-  },
-];
 
 function StepThree({
   data,
@@ -32,18 +10,36 @@ function StepThree({
   handleStep,
   handleFormUpdate,
 }: StepThreePropsType) {
+
+  const [addonList, setAddonList] = useState<AddonType[]>(data.addons);
+
+  const handleChange = (id: number) =>{
+    setAddonList((prev) => prev.map(addon => 
+      addon.id == id ? {...addon, isAdded: !addon.isAdded} : addon 
+    ))
+  }
+
+
+    const handleSubmit = (type: "Next" | "Prev") => {
+
+      handleFormUpdate({ step: 3, data:{addons: addonList} });
+      handleStep(type);
+    };
   return (
+
+
     <div className="step_three_container">
       <div className="step_three_container_header">
-        <h1>Personal info</h1>
+        <h1>Pick add-ons</h1>
         <p className="step_three_container_description">
-          Please provide your name, email address and phone number{" "}
+          Add-ons help enchance your gaming experience
         </p>
       </div>
 
       <div className="step_three_container_addons">
-        {addons.map((addon) => <AddonCard key={addon.id} name={addon.name} description={addon.description}
-        monthlyPrice={addon.monthlyPrice} yearlyPrice={addon.yearlyPrice} type={planType}
+        {addonList.map((addon) => <AddonCard key={addon.id} id={addon.id} name={addon.name} description={addon.description}
+        monthlyPrice={addon.monthlyPrice} yearlyPrice={addon.yearlyPrice} type={planType} isAdded={addon.isAdded}
+        handleChange={handleChange}
         /> )}
       </div>
 
@@ -51,7 +47,7 @@ function StepThree({
         <button className={`steps_prev `} onClick={() => handleStep("Prev")}>
           Go back
         </button>
-        <button className={`steps_next `} onClick={() => handleStep("Next")}>
+        <button className={`steps_next `} onClick={() => handleSubmit("Next")}>
           Next Step
         </button>
       </div>

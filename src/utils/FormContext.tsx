@@ -32,6 +32,7 @@ const initialForm: FormType = {
     description: "Access to multiplayer games",
     monthlyPrice: 1,
     yearlyPrice: 10,
+    isAdded: false
   },
   {
     id: 2,
@@ -39,6 +40,7 @@ const initialForm: FormType = {
     description: "Extra 1TB of cloud storage",
     monthlyPrice: 2,
     yearlyPrice: 20,
+    isAdded: false
   },
   {
     id: 3,
@@ -46,6 +48,7 @@ const initialForm: FormType = {
     description: "Custom theme on your profile",
     monthlyPrice: 2,
     yearlyPrice: 20,
+    isAdded: false
   },
     ],
   },

@@ -1,9 +1,14 @@
 import type { AddonType } from '../../utils/FormTypes';
 import './AdoonCard.scss'
 
-function AddonCard({id, name, description, monthlyPrice, yearlyPrice, type}: AddonType & {type: "Monthly" | "Yearly"}) {
+type AddonProps = AddonType & {
+  type: "Monthly" | "Yearly",
+  handleChange: (id: number) => void
+}
+
+function AddonCard({id, name, description, monthlyPrice, yearlyPrice, type, isAdded, handleChange}: AddonProps) {
   return <div className="addon">
-    <input type="checkbox" className='addon_check' />
+    <input type="checkbox" className='addon_check' checked={isAdded} onChange={()=>handleChange(id)}/>
     <div className="addon_details">
         <p className='addon_name'>{name}</p>
         <p className='addon_description'>{description}</p>

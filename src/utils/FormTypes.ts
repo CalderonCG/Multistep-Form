@@ -41,6 +41,7 @@ export type AddonType = {
   description: string
   monthlyPrice: number;
   yearlyPrice: number;
+  isAdded: boolean;
 };
 
 export type PayloadType = 
