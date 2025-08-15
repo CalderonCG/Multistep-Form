@@ -18,14 +18,17 @@ const initialForm: FormType = {
   },
   stepTwo: {
     plan: {
-      name: "",
-      price: 0,
+    id: 1,
+    name: "Arcade",
+    monthlyPrice: 9,
+    yearlyPrice: 90,
     },
-    type: "Monthly",
   },
   stepThree: {
     addons: [],
   },
+  
+    type: "Monthly",
 };
 
 //Funcion que actualiza el form respecto al paso que se indico
@@ -39,6 +42,8 @@ const formReducer = (state: FormType,action:PayloadType) => {
 
     case 3:
       return { ...state, stepThree:action.data };
+    case 4:
+      return { ...state, type:action.data };
     default:
       return state;
   }
@@ -54,8 +59,17 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
     dispatchForm(payload);
   };
 
+  //Funcion que se exporta junto al contexto, esta es la que se llama en los componentes
+  const updateType = (type: 'Monthly'|'Yearly') => {
+    const payload: PayloadType = {
+      step: 4,
+      data: type
+    }
+    dispatchForm(payload);
+  };
+
   return(
-    <FormContext.Provider value={{form, updateForm}}>
+    <FormContext.Provider value={{form, updateForm, updateType}}>
         {children}
     </FormContext.Provider>
   )

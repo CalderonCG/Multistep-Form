@@ -1,9 +1,16 @@
 import { useState } from "react";
-import type { StepTwoPropsType } from "../../utils/FormTypes";
+import type { StepTwoPropsType, StepTwoType } from "../../utils/FormTypes";
 import PlanCard from "../PlanCard/PlanCard";
 import "./StepTwo.scss";
 
-const plans = [
+type planType = {
+  id: number;
+  name: "Arcade" | "Advanced" | "Pro";
+  monthlyPrice: number;
+  yearlyPrice: number;
+};
+
+const plans: planType[] = [
   {
     id: 1,
     name: "Arcade",
@@ -24,8 +31,19 @@ const plans = [
   },
 ] as const;
 
-function StepTwo({ data, handleStep, handleFormUpdate }: StepTwoPropsType) {
-  const [isYearly, setIsYearly] = useState(false);
+function StepTwo({ data, planType, handleStep, handleFormUpdate, handleTypeUpdate }: StepTwoPropsType) {
+  const [selectedType, setSelectedType] = useState<"Monthly" | "Yearly">(planType);
+  const [selectedPlan, setSelectedPlan] = useState(data.plan);
+
+  const handleSubmit = (type: "Next" | "Prev") => {
+    const storedPlan: StepTwoType = {
+      plan: selectedPlan
+    };
+    handleFormUpdate({ step: 2, data: storedPlan });
+    handleTypeUpdate(selectedType);
+    handleStep(type);
+  };
+
   return (
     <div className="step_two_container">
       <div className="step_two_container_header">
@@ -44,7 +62,9 @@ function StepTwo({ data, handleStep, handleFormUpdate }: StepTwoPropsType) {
               name={plan.name}
               monthlyPrice={plan.monthlyPrice}
               yearlyPrice={plan.yearlyPrice}
-              isYearly={isYearly}
+              type={selectedType}
+              isSelected={plan.id === selectedPlan.id}
+              handleSelected={setSelectedPlan}
             />
           ))}
         </div>
@@ -52,17 +72,23 @@ function StepTwo({ data, handleStep, handleFormUpdate }: StepTwoPropsType) {
         <div className="step_two_container_mode">
           <p>Monthly</p>
           <div className="toggle">
-            <input type="checkbox" checked={isYearly} onChange={()=>setIsYearly(!isYearly)}  />
+            <input
+              type="checkbox"
+              checked={selectedType === "Yearly"}
+              onChange={() =>
+                setSelectedType(selectedType === "Yearly" ? "Monthly" : "Yearly")
+              }
+            />
             <label></label>
           </div>
           <p>Yearly</p>
         </div>
       </div>
       <div className="steps">
-        <button className={`steps_prev `} onClick={() => handleStep("Prev")}>
+        <button className={`steps_prev `} onClick={() => handleSubmit("Prev")}>
           Go back
         </button>
-        <button className={`steps_next `} onClick={() => handleStep("Next")}>
+        <button className={`steps_next `} onClick={() => handleSubmit("Next")}>
           Next Step
         </button>
       </div>

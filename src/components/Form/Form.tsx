@@ -20,7 +20,7 @@ const updateStep = (state: number, type: "Next" | "Prev") => {
 
 function Form() {
   const [step, dispatchStep] = useReducer(updateStep, 1);
-  const {form, updateForm} = useForm();
+  const {form, updateForm, updateType} = useForm();
   console.log(form);
 
   return (
@@ -35,7 +35,7 @@ function Form() {
         {step === 1 ? (
           <StepOne data={form.stepOne} handleStep={dispatchStep} handleFormUpdate={updateForm}/>
         ) : step === 2 ? (
-          <StepTwo handleStep={dispatchStep}/>
+          <StepTwo data={form.stepTwo} planType={form.type} handleStep={dispatchStep}  handleFormUpdate={updateForm} handleTypeUpdate={updateType}/>
         ) : step === 3 ? (
           <StepThree handleStep={dispatchStep}/>
         ) : (
