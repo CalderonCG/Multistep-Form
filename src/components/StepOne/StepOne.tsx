@@ -64,7 +64,7 @@ function StepOne({ data, handleStep, handleFormUpdate }: StepOnePropsType) {
         action="name" handleChange={dispatch} error={errors.name}/>
         <Input name="Email Address" placeholder="e.g Chris@email.com" value={state.email}
          action="email" handleChange={dispatch} error={errors.email}/>
-        <Input name="Phone Number" placeholder="e.g +503 1235 1235" value={state.phoneNumber}
+        <Input name="Phone Number" placeholder="e.g +503 1235-1235" value={state.phoneNumber}
          action="phoneNumber" handleChange={dispatch} error={errors.phoneNumber}/>
       </div>
       <div className="steps">
