@@ -1,5 +1,7 @@
+import { BillPdf } from "../../utils/BillingFormat";
 import type { AddonType, FormType } from "../../utils/FormTypes";
 import "./StepFour.scss";
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 type SummaryProps = {
   form: FormType;
@@ -36,10 +38,13 @@ const calculateTotal = ({
   }
 };
 
+
 function StepFour({ form, handleStep }: SummaryProps) {
   const addonList = form.stepThree.addons.filter(
     (addon) => addon.isAdded === true
   );
+
+
   const total = calculateTotal({
     planMonthly: form.stepTwo.plan.monthlyPrice,
     planYearly: form.stepTwo.plan.yearlyPrice,
@@ -47,6 +52,19 @@ function StepFour({ form, handleStep }: SummaryProps) {
     type: form.type,
   });
 
+  const data = {
+  name: form.stepOne.name,
+  email: form.stepOne.email,
+  number: form.stepOne.phoneNumber,
+  plan: `${form.stepTwo.plan.name} plan`,
+  planPrice: form.type === 'Monthly' ? form.stepTwo.plan.monthlyPrice : form.stepTwo.plan.yearlyPrice,
+  addOns: addonList.map((addon) => ({
+    name: addon.name,
+    price: form.type === "Yearly" ? addon.yearlyPrice : addon.monthlyPrice,
+  })),
+  total: total,
+  type: form.type
+};
   return (
     <div className="step_four_container">
       <div className="step_four_container_header">
@@ -108,6 +126,19 @@ function StepFour({ form, handleStep }: SummaryProps) {
         <button className={`steps_prev `} onClick={() => handleStep("Prev")}>
           Go back
         </button>
+        <PDFDownloadLink
+          document={<BillPdf data={data} />}
+          fileName="factura.pdf"
+        >
+          {({ loading }) =>
+            loading ? (
+              <button disabled>Generando...</button>
+            ) : (
+              <button 
+          className={`steps_next `}>Descargar PDF</button>
+            )
+          }
+        </PDFDownloadLink>
       </div>
     </div>
   );
