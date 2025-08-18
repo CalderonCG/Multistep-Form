@@ -1,7 +1,7 @@
 import "./PlanCard.scss";
-import arcadeIcon from "../../assets/images/icon-arcade.svg";
-import advancedIcon from "../../assets/images/icon-advanced.svg"
-import proIcon from "../../assets/images/icon-pro.svg"
+import arcadeIcon from "/images/icon-arcade.svg";
+import advancedIcon from "/images/icon-advanced.svg"
+import proIcon from "/images/icon-pro.svg"
 
 type planType = {
   id: number,

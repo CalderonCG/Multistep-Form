@@ -43,10 +43,10 @@ function StepOne({ data, handleStep, handleFormUpdate }: StepOnePropsType) {
     const hasError = Object.values(errorList).some(value => value !== '')
     
     console.log(errorList)
-    // if(hasError){
-    //   setErrors(errorList)
-    //   return
-    // }
+    if(hasError){
+      setErrors(errorList)
+      return
+    }
     handleFormUpdate({step: 1, data: state});
     handleStep(type)
   }
