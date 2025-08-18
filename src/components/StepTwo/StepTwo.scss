@@ -1,0 +1,133 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as v;
+
+.step_two_container {
+  width: 100%;
+  flex: 1 1 auto;
+  padding: 3rem 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &_header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 0 0 auto;
+  }
+  h1 {
+    color: v.$Blue950;
+    font-size: 2rem;
+  }
+
+  &_description {
+    color: v.$Grey500;
+  }
+
+  &_plans {
+    width: 100%;
+    @include m.flexCenter(column, start);
+    gap: 2rem;
+    flex: 1 1 auto;
+  }
+
+  &_list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_mode {
+    @include m.flexCenter(row, center);
+    width: 100%;
+    height: fit-content;
+    background-color: v.$Blue100;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+
+    p {
+      font-weight: 600;
+      color: v.$Grey500;
+    }
+
+    .active {
+      color: v.$Blue950;
+    }
+
+    .toggle {
+      position: relative;
+      box-sizing: border-box;
+    }
+    .toggle input[type="checkbox"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .toggle label {
+      position: relative;
+      display: flex;
+
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .toggle label:before {
+      content: "";
+      height: 1.9688rem;
+      width: 3.5156rem;
+      background: v.$Blue950;
+      position: relative;
+      display: inline-block;
+      border-radius: 2.875rem;
+      box-sizing: border-box;
+      transition: 0.2s ease-in;
+    }
+    .toggle label:after {
+      content: "";
+      position: absolute;
+      width: 1.7813rem;
+      height: 1.7813rem;
+      border-radius: 50%;
+      left: 0.0938rem;
+      top: 0.0938rem;
+      z-index: 2;
+      background: #fff;
+      box-sizing: border-box;
+      transition: 0.2s ease-in;
+    }
+    .toggle input[type="checkbox"]:checked + label:before {
+      background: v.$Blue950;
+    }
+    .toggle input[type="checkbox"]:checked + label:after {
+      left: 1.6406rem;
+    }
+  }
+
+      .steps {
+    @include m.flexCenter(row, space-between);
+    width: 100%;
+
+    &_next {
+      @include m.stepButton();
+      align-self: flex-end;
+      margin-left: auto;
+    }
+
+    &_prev {
+      width: fit-content;
+      padding: 1rem 2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 0.5rem;
+
+      background-color: inherit;
+      color:v.$Grey500;
+      flex: 0 0 auto;
+      align-self: flex-end;
+    }}
+}

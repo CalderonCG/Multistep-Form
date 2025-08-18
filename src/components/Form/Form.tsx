@@ -1,18 +1,49 @@
-import StepCard from '../StepCard/StepCard'
-import './Form.scss'
+import { useReducer } from "react";
+import StepCard from "../StepCard/StepCard";
+import StepFour from "../StepFour/StepFour";
+import StepOne from "../StepOne/StepOne";
+import StepThree from "../StepThree/StepThree";
+import StepTwo from "../StepTwo/StepTwo";
+import "./Form.scss";
+import { useForm } from "../../utils/FormContext";
+
+const updateStep = (state: number, type: "Next" | "Prev") => {
+  switch (type) {
+    case "Next":
+      return state + 1;
+    case "Prev":
+      return state - 1;
+    default:
+      return state;
+  }
+};
 
 function Form() {
+  const [step, dispatchStep] = useReducer(updateStep, 1);
+  const {form, updateForm, updateType} = useForm();
+  console.log(form);
+
   return (
     <div className="container">
-        <div className='container_list'>
-            <StepCard/>
-            <StepCard/>
-            <StepCard/>
-            <StepCard/>
-        </div>
-        <div></div>
+      <div className="container_list">
+        <StepCard step={1} name="YOUR INFO" isActive={step===1} />
+        <StepCard step={2} name="SELECT PLAN"  isActive={step===2}/>
+        <StepCard step={3} name="ADD-ONS" isActive={step===3}/>
+        <StepCard step={4} name="SUMMARY" isActive={step===4}/>
+      </div>
+      <div className="container_form">
+        {step === 1 ? (
+          <StepOne data={form.stepOne} handleStep={dispatchStep} handleFormUpdate={updateForm}/>
+        ) : step === 2 ? (
+          <StepTwo data={form.stepTwo} planType={form.type} handleStep={dispatchStep}  handleFormUpdate={updateForm} handleTypeUpdate={updateType}/>
+        ) : step === 3 ? (
+          <StepThree data={form.stepThree} handleStep={dispatchStep } handleFormUpdate={updateForm}  planType={form.type}/>
+        ) : (
+          <StepFour form={form} handleStep={dispatchStep}/>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Form
+export default Form;

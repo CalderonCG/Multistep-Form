@@ -3,8 +3,8 @@
 
 .container {
   @include m.flexCenter(row, start);
-  width: 70%;
-  height: 80%;
+  width: clamp(70rem, 90vh, 90rem);
+  height: clamp(40rem, 90vh, 50rem);
   border-radius: 1rem;
   padding: 1.5rem;
   background-color: white;
@@ -18,9 +18,17 @@
     gap: 2rem;
     border-radius: 1rem;
 
-    background-image: url("/src/assets/images/bg-sidebar-desktop.svg");
+    background-image: url("/images/bg-sidebar-desktop.svg");
     background-repeat: no-repeat;
     background-size: cover; // or cover
     background-position: center;
   }
+
+  &_form {
+    @include m.flexCenter(column, start);
+    height: 100%;
+    width: 100%;
+  }
+
+  
 }
